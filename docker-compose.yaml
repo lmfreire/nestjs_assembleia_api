@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=assembleia
+    ports: 
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
