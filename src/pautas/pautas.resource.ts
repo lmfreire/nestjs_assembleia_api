@@ -10,6 +10,10 @@ export class PautaResource{
     status: string;
 }
 
+export class NovaSessaoResource {
+    minutos: number;
+}
+
 export function toDomain(resource: CriarPautaResource): Pauta{
     const pauta = new Pauta();
     pauta.descricao = resource.descricao;
@@ -24,3 +28,4 @@ export function toRepresentation(entity: Pauta): PautaResource{
 
     return resource;
 }
+
