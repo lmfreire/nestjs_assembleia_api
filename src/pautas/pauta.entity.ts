@@ -1,5 +1,11 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
+enum StatusPauta {
+    NAO_INCIADA = 'Sessão não Iniciada',
+    INICIADA = 'Sessão Iniciada',
+    ENCERRADO = 'Pauta Encerrado',
+}
+
 @Entity('pauta')
 export class Pauta {
 
@@ -19,6 +25,13 @@ export class Pauta {
     fechamento?: Date;
 
     obterStatus(): string {
-        return "Sem Status"
+        if (this.fechamento && this.fechamento < new Date()) {
+            return StatusPauta.ENCERRADO;
+        } 
+        if (this.abertura) {
+            return StatusPauta.INICIADA;
+        } 
+        
+        return StatusPauta.NAO_INCIADA;
     }
 }
