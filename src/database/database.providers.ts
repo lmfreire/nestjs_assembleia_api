@@ -7,7 +7,7 @@ export const databaseProviders: Provider[] = [
         useFactory: () => {
             const dataSource = new DataSource({
                 type: 'mysql',
-                host: 'localhost',
+                host: 'nestjs_assembleia_api-db-1',
                 port: 3306,
                 username: 'root',
                 password: 'root',
